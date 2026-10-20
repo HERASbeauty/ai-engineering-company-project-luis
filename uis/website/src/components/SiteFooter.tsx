@@ -3,47 +3,36 @@ type SiteFooterProps = {
 };
 
 const footerLinks = [
+  { href: "#home", label: "Home" },
   { href: "#services", label: "Services" },
-  { href: "#presence", label: "Our presence" },
-  { href: "#about", label: "About" },
+  { href: "#coverage", label: "Coverage" },
   { href: "#contact", label: "Contact" },
 ];
 
 export function SiteFooter({ onNavigate }: SiteFooterProps) {
   return (
-    <footer className="site-footer">
-      <div className="page-wrap">
-        <div className="site-footer__main">
-          <a className="brand brand--footer" href="#home" onClick={onNavigate}>
-            <span className="brand__symbol" aria-hidden="true">
-              <svg viewBox="0 0 34 34" fill="none">
-                <path d="M4 10.5h17.5a8.5 8.5 0 1 1 0 17H13" />
-                <path d="M4 17h17.5a2 2 0 1 1 0 4H13" />
-                <path d="M4 23.5h6" />
-              </svg>
-            </span>
-            <span className="brand__word">track<span>flow</span></span>
+    <footer className="bg-[#071522] text-slate-200">
+      <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-12 xl:px-16">
+        <div className="flex flex-col gap-8 border-b border-white/15 pb-8 md:flex-row md:items-center md:justify-between">
+          <a className="inline-flex min-h-11 items-center gap-2 rounded-sm text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-300" href="#home" onClick={onNavigate}>
+            <span className="font-display text-xl font-bold">TrackFlow</span>
           </a>
-          <p className="site-footer__tagline">
-            Logistics for the journey
-            <br />
-            behind every order.
-          </p>
-          <nav className="footer-nav" aria-label="Footer navigation">
+          <nav aria-label="Footer navigation">
+            <ul className="m-0 flex list-none flex-wrap gap-x-5 gap-y-2 p-0">
             {footerLinks.map((link) => (
-              <a href={link.href} key={link.href} onClick={onNavigate}>
-                {link.label}
-              </a>
+              <li key={link.href}>
+                <a className="inline-flex min-h-11 items-center text-sm text-slate-300 underline decoration-transparent underline-offset-4 hover:text-white hover:decoration-current focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300" href={link.href} onClick={onNavigate}>
+                  {link.label}
+                </a>
+              </li>
             ))}
+            </ul>
           </nav>
-        </div>
-        <div className="site-footer__bottom">
-          <span>© {new Date().getFullYear()} TrackFlow</span>
-          <span>Founded in Los Angeles in 2009</span>
-          <a href="#home" onClick={onNavigate}>
-            Back to top <span aria-hidden="true">↑</span>
+          <a className="inline-flex min-h-11 items-center text-sm font-semibold text-sky-300 underline decoration-transparent underline-offset-4 hover:text-white hover:decoration-current focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300" href="https://linkedin.com/company/trackflow" target="_blank" rel="noreferrer" aria-label="TrackFlow on LinkedIn (opens in a new tab)">
+            LinkedIn <span className="ml-2" aria-hidden="true">↗</span>
           </a>
         </div>
+        <p className="pt-6 text-xs leading-6 text-slate-400">© 2025 TrackFlow. All rights reserved.</p>
       </div>
     </footer>
   );
