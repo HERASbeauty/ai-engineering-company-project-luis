@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { SectionHeading } from "./components/SectionHeading";
+import { CoverageSection } from "./components/CoverageSection";
 import { ServiceCard } from "./components/ServiceCard";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
@@ -7,37 +8,31 @@ import { RouteMap, WarehouseBackdrop } from "./components/HeroVisual";
 
 const services = [
   {
-    number: "01",
-    title: "Warehouse Management",
-    description: "Storage, picking, and packing for e-commerce operations.",
-    benefits: [
-      "Storage, picking and packing",
-      "Real-time inventory",
-      "We operate warehouses in Los Angeles and Zaragoza",
-    ],
+    title: "Warehousing",
+    description: "Storage, picking, and packing for e-commerce brands.",
     icon: "warehouse" as const,
+    image: {
+      src: "/images/trackflow-service-warehousing.webp",
+      alt: "Warehouse worker checking packages beside stocked shelving",
+    },
   },
   {
-    number: "02",
-    title: "Last-Mile Deliveries",
-    description: "Shipment coordination across our network in both countries.",
-    benefits: [
-      "Certified carrier network in both countries",
-      "Unified shipment tracking",
-      "Incident and returns management",
-    ],
-    icon: "route" as const,
+    title: "Last-mile Delivery",
+    description: "Delivery from the warehouse to the end customer.",
+    icon: "delivery" as const,
+    image: {
+      src: "/images/trackflow-service-last-mile.webp",
+      alt: "Courier carrying a parcel beside a loaded delivery van",
+    },
   },
   {
-    number: "03",
     title: "Reverse Logistics",
-    description: "Returns handling from inspection through reconditioning.",
-    benefits: [
-      "Complete returns management",
-      "Inspection and reconditioning",
-      "Integration with your sales platform",
-    ],
-    icon: "return" as const,
+    description: "Returns handling, inspection, and product reconditioning.",
+    icon: "returns" as const,
+    image: {
+      src: "/images/trackflow-service-reverse-logistics.webp",
+      alt: "Worker inspecting a returned package at a returns station",
+    },
   },
 ];
 
@@ -223,64 +218,33 @@ function App() {
         </section>
 
         <section
-          className="scroll-mt-24 bg-white py-20 sm:py-24"
+          className="services-section scroll-mt-24"
           id="services"
           aria-labelledby="services-title"
+          aria-describedby="services-description"
         >
-          <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12 xl:px-16">
-            <SectionHeading
-              eyebrow="What we do"
-              title="Logistics, handled from start to return."
-              description="Three connected service areas for the operational journey of e-commerce."
-              id="services-title"
-            />
-            <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="services-container">
+            <div className="services-intro">
+              <div>
+                <p className="services-eyebrow">Our services</p>
+                <h2 className="services-title" id="services-title">
+                  End-to-end logistics for e-commerce brands.
+                </h2>
+              </div>
+              <p className="services-intro-description" id="services-description">
+                Warehousing, last-mile delivery, and reverse logistics for
+                e-commerce brands in the United States and Spain.
+              </p>
+            </div>
+            <div className="services-grid">
               {services.map((service) => (
-                <ServiceCard key={service.number} {...service} />
+                <ServiceCard key={service.title} {...service} />
               ))}
             </div>
           </div>
         </section>
 
-        <section
-          className="scroll-mt-24 bg-[#f2f6fa] py-20 sm:py-24"
-          id="coverage"
-          aria-labelledby="coverage-title"
-        >
-          <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12 xl:px-16">
-            <SectionHeading
-              eyebrow="Where we operate"
-              title="Coverage on both sides of the Atlantic."
-              description="Warehouses in Los Angeles and Zaragoza support operations across the United States and Spain."
-              id="coverage-title"
-            />
-            <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2">
-              {coverage.map((region) => (
-                <article className="rounded-lg border border-slate-200 bg-white p-6 sm:p-8" key={region.code}>
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <p className="text-xs font-bold uppercase text-signal-500">{region.label}</p>
-                      <h3 className="mt-2 font-display text-3xl font-semibold text-brand-950">{region.country}</h3>
-                    </div>
-                    <span className="grid size-12 shrink-0 place-items-center rounded-md bg-brand-950 text-sm font-bold text-white">{region.code}</span>
-                  </div>
-                  <div className="mt-8 border-t border-slate-200 pt-5">
-                    <p className="text-sm font-semibold text-brand-950">{region.warehouse}</p>
-                    <p className="mt-2 text-sm leading-6 text-slate-600">{region.reach}</p>
-                  </div>
-                  <div className="mt-6">
-                    <p className="text-xs font-bold uppercase text-slate-500">Carriers</p>
-                    <ul className="mt-3 mb-0 flex list-none flex-wrap gap-2 p-0" aria-label={`${region.country} carriers`}>
-                      {region.carriers.map((carrier) => (
-                        <li className="rounded-md bg-slate-100 px-3 py-2 text-sm font-semibold text-brand-900" key={carrier}>{carrier}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+        <CoverageSection regions={coverage} />
 
         <section className="bg-brand-950 py-20 text-white sm:py-24" aria-labelledby="why-title">
           <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12 xl:px-16">
