@@ -14,6 +14,14 @@ El briefing caracteriza esta operación transfronteriza como dos entornos regula
 
 Los dos almacenes usan sistemas distintos y no comparten una vista global del inventario. El briefing describe ocho transportistas en los dos mercados, asignación y seguimiento principalmente manuales y consultas separadas en los portales de cada transportista. No hay métricas históricas estructuradas de su rendimiento.
 
+## Milestone 1: sitio web público
+
+La fuente autoritativa del hito es [`docs/milestone-1/BRIEFING.md`](../docs/milestone-1/BRIEFING.md). Define un sitio público para presentar TrackFlow y captar leads de marcas de e-commerce, con una landing page y un formulario de solicitud de información. Exige contenido responsive, accesible y optimizado para SEO, uso de Tailwind y un idioma base para toda la experiencia; un segundo idioma es opcional.
+
+El briefing especifica el orden y contenido de las secciones de la landing, así como los campos, opciones, obligatoriedad y validaciones del formulario. Conserva literalmente sus mensajes de validación, el contador de comentarios, la advertencia para el volumen «0-100 envíos/mes», el mensaje de éxito y el ejemplo de JSON-LD de Schema.org; consulta la fuente para los textos y valores exactos, sin reconstruirlos de memoria.
+
+Algunas frases promocionales solicitadas —como «Inventario en tiempo real» y «El único operador con infraestructura propia en Estados Unidos y España»— no son hechos operativos confirmados: `CONTEXT.md` indica que no existe una vista global del inventario en tiempo real y no confirma la exclusividad de infraestructura. Trátalas como contenido requerido por el briefing, no como capacidades verificadas.
+
 ## Áreas y retos principales
 
 - **Operaciones de almacén:** los pedidos llegan por correo en formatos distintos y se transcriben manualmente; el picking usa listas impresas; las discrepancias de inventario se detectan tarde. No hay visibilidad global del stock en tiempo real.

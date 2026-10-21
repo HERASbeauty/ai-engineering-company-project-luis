@@ -16,7 +16,8 @@ Antes de proponer o realizar cambios, lee:
 2. `memory-bank/projectbrief.md`.
 3. `memory-bank/techContext.md`.
 4. `memory-bank/progress.md`.
-5. El `README.md` de cada directorio afectado y las reglas aplicables bajo `.agents/rules/`, si existen.
+5. Para trabajar en Milestone 1 o en el sitio web público, `docs/milestone-1/BRIEFING.md`, antes de planificar o modificar código relacionado.
+6. El `README.md` de cada directorio afectado y las reglas aplicables bajo `.agents/rules/`, si existen.
 
 Consulta también `company-choice.md` cuando el alcance dependa del foco elegido por el estudiante. Si una fuente contradice a otra, conserva la ambigüedad y señala la discrepancia; no elijas una versión por inferencia.
 
