@@ -3,6 +3,7 @@ import { SectionHeading } from "./components/SectionHeading";
 import { ServiceCard } from "./components/ServiceCard";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
+import { RouteMap, WarehouseBackdrop } from "./components/HeroVisual";
 
 const services = [
   {
@@ -97,80 +98,128 @@ function App() {
       <SiteHeader menuOpen={menuOpen} onMenuToggle={setMenuOpen} />
       <main id="main-content">
         <section
-          className="relative isolate overflow-hidden bg-linear-to-br from-brand-950 via-brand-900 to-[#173a56] text-white"
+          className="hero-section"
           id="home"
           aria-labelledby="hero-title"
         >
-          <div className="pointer-events-none absolute inset-0 -z-10 opacity-35" aria-hidden="true">
-            <svg className="h-full w-full" viewBox="0 0 1440 720" fill="none">
-              <defs>
-                <pattern id="hero-grid" width="56" height="56" patternUnits="userSpaceOnUse">
-                  <path d="M56 0H0V56" stroke="white" strokeOpacity=".08" />
-                </pattern>
-              </defs>
-              <rect width="1440" height="720" fill="url(#hero-grid)" />
-              <path d="M805 588C951 468 1044 451 1194 344S1348 190 1478 116" stroke="#63B6FF" strokeOpacity=".38" strokeWidth="2" strokeDasharray="8 12" />
-              <circle cx="805" cy="588" r="5" fill="#8DCEFF" />
-              <circle cx="1194" cy="344" r="5" fill="#8DCEFF" />
-            </svg>
-          </div>
-          <div className="mx-auto grid min-h-[560px] max-w-7xl grid-cols-1 items-center gap-12 px-5 py-14 sm:px-8 md:py-16 lg:grid-cols-[1.12fr_0.88fr] lg:gap-8 lg:px-12 xl:px-16">
-            <div className="max-w-2xl">
-              <p className="mb-6 flex items-center gap-3 text-xs font-bold uppercase text-sky-300">
-                <span className="h-px w-8 bg-sky-300" aria-hidden="true" />
-                United States · Spain
+          <WarehouseBackdrop />
+          <div className="hero-scrim" aria-hidden="true" />
+          <div className="hero-layout">
+            <div className="hero-copy">
+              <p className="hero-eyebrow hero-reveal hero-reveal--first">
+                Logistics in motion
               </p>
-              <h1 className="font-display text-[2.5rem] font-semibold leading-[1.04] text-white sm:text-5xl lg:text-[3.25rem] xl:text-[3.5rem]" id="hero-title">
-                <span className="block">Logistics that scales</span>
-                {" "}
-                <span className="block text-sky-300">
-                  with your <span className="whitespace-nowrap">e-commerce</span>
+              <h1
+                aria-label="Logistics that scales with your e-commerce"
+                className="hero-title hero-reveal hero-reveal--second"
+                id="hero-title"
+              >
+                <span>Logistics that</span>
+                <span>
+                  <span className="hero-title-accent">scales</span> with your
                 </span>
+                <span>e-commerce</span>
               </h1>
-              <p className="mt-7 max-w-xl text-base leading-8 text-slate-200 sm:text-lg">
-                Warehouse management, last-mile deliveries, and reverse logistics in the United States and Spain. Over 15 years helping fashion, electronics, and cosmetics brands grow without worrying about operations.
+              <p className="hero-subtitle hero-reveal hero-reveal--third">
+                <span className="hidden sm:inline">
+                  Warehouse management, last-mile deliveries, and reverse logistics in the United States and Spain. Over 15 years helping fashion, electronics, and cosmetics brands grow without worrying about operations.
+                </span>
+                <span className="sm:hidden">
+                  Warehousing, last-mile delivery, and reverse logistics across the US and Spain.
+                </span>
               </p>
-              <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
-                <a className="inline-flex min-h-13 items-center justify-center gap-5 rounded-md bg-sky-300 px-6 py-3 font-bold text-brand-950 transition-colors hover:bg-sky-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none" href="/application.html">
-                  Request information <span aria-hidden="true">↗</span>
+              <div className="hero-actions hero-reveal hero-reveal--fourth">
+                <a className="hero-primary-cta" href="/application.html">
+                  Request information <span aria-hidden="true">→</span>
                 </a>
-                <a className="inline-flex min-h-12 items-center justify-center rounded-md px-4 py-3 font-semibold text-white underline decoration-white/40 underline-offset-4 hover:decoration-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" href="#services">
+                <a className="hero-secondary-cta" href="#services">
                   Explore services
+                  <svg
+                    aria-hidden="true"
+                    className="size-4"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                  >
+                    <path
+                      d="m5 7.5 5 5 5-5"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.7"
+                    />
+                  </svg>
                 </a>
               </div>
             </div>
-            <div className="relative mx-auto w-full max-w-xl lg:ml-auto">
-              <div className="rounded-lg border border-white/15 bg-white/[0.06] p-4 shadow-2xl shadow-black/20 backdrop-blur sm:p-7">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-xs font-bold uppercase text-sky-300">One operation across two countries</p>
-                    <p className="mt-2 font-display text-2xl font-semibold text-white sm:text-3xl">Built around your business</p>
-                  </div>
-                  <span className="rounded-md border border-white/20 px-3 py-2 text-xs font-semibold text-slate-200">US ↔ ES</span>
-                </div>
-                <svg className="mt-5 block h-auto w-full" viewBox="0 0 520 300" fill="none" role="img" aria-labelledby="coverage-graphic-title">
-                  <title id="coverage-graphic-title">TrackFlow locations connected between Los Angeles and Zaragoza</title>
-                  <path d="M80 166C163 65 344 64 438 139" stroke="#75BEFF" strokeWidth="2" strokeDasharray="7 9" />
-                  <circle cx="80" cy="166" r="19" fill="#3186C8" fillOpacity=".24" />
-                  <circle cx="80" cy="166" r="7" fill="#A8DBFF" />
-                  <circle cx="438" cy="139" r="19" fill="#3186C8" fillOpacity=".24" />
-                  <circle cx="438" cy="139" r="7" fill="#A8DBFF" />
-                  <rect x="52" y="78" width="124" height="54" rx="5" fill="#10283B" stroke="white" strokeOpacity=".2" />
-                  <text x="66" y="99" fill="#9DB4C7" fontFamily="sans-serif" fontSize="10" letterSpacing="1.5">UNITED STATES</text>
-                  <text x="66" y="119" fill="white" fontFamily="sans-serif" fontSize="15" fontWeight="600">Los Angeles</text>
-                  <rect x="344" y="57" width="123" height="54" rx="5" fill="#10283B" stroke="white" strokeOpacity=".2" />
-                  <text x="358" y="78" fill="#9DB4C7" fontFamily="sans-serif" fontSize="10" letterSpacing="1.5">SPAIN</text>
-                  <text x="358" y="98" fill="white" fontFamily="sans-serif" fontSize="15" fontWeight="600">Zaragoza</text>
-                  <path d="M51 222h458M51 238h320" stroke="white" strokeOpacity=".12" />
-                  <text x="52" y="267" fill="#B8C9D8" fontFamily="sans-serif" fontSize="13">Warehousing</text>
-                  <text x="202" y="267" fill="#B8C9D8" fontFamily="sans-serif" fontSize="13">Last mile</text>
-                  <text x="335" y="267" fill="#B8C9D8" fontFamily="sans-serif" fontSize="13">Returns</text>
+            <RouteMap />
+            <ul className="hero-service-strip" aria-label="TrackFlow services">
+              <li className="hero-service-item">
+                <svg
+                  aria-hidden="true"
+                  className="hero-service-icon"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.8"
+                >
+                  <path d="m16 3 11 6.2v13.6L16 29 5 22.8V9.2L16 3Z" />
+                  <path d="m5.5 9.5 10.5 6 10.5-6M16 15.5V29" />
                 </svg>
-              </div>
-              <p className="mt-4 text-right text-xs text-slate-300">Los Angeles · Zaragoza</p>
-            </div>
+                <div className="hero-service-copy">
+                  <span className="hero-service-title">Warehousing</span>
+                  <p className="hero-service-description">
+                    Flexible storage for growing brands
+                  </p>
+                </div>
+              </li>
+              <li className="hero-service-item">
+                <svg
+                  aria-hidden="true"
+                  className="hero-service-icon"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.8"
+                >
+                  <path d="M3.5 7h16v15h-16zM19.5 12h5.2l4.3 5v5h-9.5z" />
+                  <circle cx="9" cy="23" r="2.5" />
+                  <circle cx="24.5" cy="23" r="2.5" />
+                </svg>
+                <div className="hero-service-copy">
+                  <span className="hero-service-title">Last-mile delivery</span>
+                  <p className="hero-service-description">
+                    Reliable delivery to your customers
+                  </p>
+                </div>
+              </li>
+              <li className="hero-service-item">
+                <svg
+                  aria-hidden="true"
+                  className="hero-service-icon"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.8"
+                >
+                  <path d="M26 11a11 11 0 0 0-18.8-4L5 9.5M5 9.5V4.7m0 4.8h4.8" />
+                  <path d="M6 21a11 11 0 0 0 18.8 4L27 22.5m0 0v4.8m0-4.8h-4.8" />
+                </svg>
+                <div className="hero-service-copy">
+                  <span className="hero-service-title">Reverse logistics</span>
+                  <p className="hero-service-description">
+                    Simpler returns, stronger customer loyalty
+                  </p>
+                </div>
+              </li>
+            </ul>
           </div>
-          <div className="absolute bottom-0 left-0 h-1 w-full bg-linear-to-r from-sky-400 via-blue-500 to-transparent" aria-hidden="true" />
+          <div className="hero-bottom-rule" aria-hidden="true" />
         </section>
 
         <section

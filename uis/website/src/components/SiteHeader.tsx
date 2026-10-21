@@ -23,22 +23,24 @@ export function SiteHeader({ menuOpen, onMenuToggle }: SiteHeaderProps) {
   }, [onMenuToggle]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/95 backdrop-blur">
+    <header className="site-header sticky top-0 z-40 border-b border-white/10 bg-[#071422]/95 backdrop-blur-xl">
       <div className="mx-auto flex min-h-[76px] max-w-7xl items-center justify-between gap-4 px-5 sm:px-8 lg:px-12 xl:px-16">
         <a
-          className="inline-flex min-h-11 items-center gap-2 rounded-sm text-brand-950 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal-500"
+          className="inline-flex min-h-11 items-center gap-2 rounded-sm text-[#F3F6F8] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#62E3DF]"
           href="#home"
           aria-label="TrackFlow home"
           onClick={() => onMenuToggle(false)}
         >
-          <svg className="size-9 text-signal-500" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <svg className="size-9 text-[#62E3DF]" viewBox="0 0 36 36" fill="none" aria-hidden="true">
               <path d="M4 10h18a8 8 0 1 1 0 16h-8M4 17h18a2 2 0 1 1 0 4h-8M4 24h6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
             </svg>
-          <span className="font-display text-xl font-bold tracking-normal">TrackFlow</span>
+          <span className="font-display text-xl font-bold tracking-normal">
+            TRACK<span className="text-[#62E3DF]">FLOW</span>
+          </span>
         </a>
 
         <button
-          className="grid size-11 shrink-0 place-items-center rounded-md border border-slate-300 text-brand-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal-500 md:hidden"
+          className="grid size-11 shrink-0 place-items-center rounded-md border border-[#62E3DF]/45 bg-[#10283E] text-[#62E3DF] hover:bg-[#173A56] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#62E3DF] md:hidden"
           type="button"
           aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={menuOpen}
@@ -54,13 +56,13 @@ export function SiteHeader({ menuOpen, onMenuToggle }: SiteHeaderProps) {
         </button>
 
         <nav
-          className={`${menuOpen ? "absolute inset-x-0 top-full flex flex-col border-b border-slate-200 bg-white px-5 pb-4 shadow-lg sm:px-8" : "hidden"} md:static md:flex md:flex-row md:items-center md:gap-2 md:border-0 md:bg-transparent md:p-0 md:shadow-none`}
+          className={`${menuOpen ? "absolute inset-x-0 top-full flex flex-col border-b border-white/10 bg-[#071422] px-5 pb-4 shadow-lg sm:px-8" : "hidden"} md:static md:flex md:flex-row md:items-center md:gap-1 md:border-0 md:bg-transparent md:p-0 md:shadow-none`}
           id="primary-navigation"
           aria-label="Primary navigation"
         >
           {links.map((link) => (
             <a
-              className="flex min-h-12 items-center rounded-md px-4 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-brand-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal-500 motion-reduce:transition-none md:min-h-11"
+              className="flex min-h-12 items-center rounded-md px-4 text-sm font-semibold text-[#F3F6F8]/85 transition-colors hover:bg-white/5 hover:text-[#62E3DF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#62E3DF] motion-reduce:transition-none md:min-h-11"
               href={link.href}
               key={link.href}
               onClick={() => onMenuToggle(false)}
@@ -68,6 +70,12 @@ export function SiteHeader({ menuOpen, onMenuToggle }: SiteHeaderProps) {
               {link.label}
             </a>
           ))}
+          <a
+            className="mt-3 inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#1D67F2] px-5 text-sm font-bold text-white transition-colors hover:bg-[#1758D2] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#62E3DF] motion-reduce:transition-none md:ml-2 md:mt-0"
+            href="/application.html"
+          >
+            Request information <span aria-hidden="true">→</span>
+          </a>
         </nav>
       </div>
     </header>
