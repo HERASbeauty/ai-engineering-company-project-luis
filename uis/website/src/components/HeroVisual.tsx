@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-const US_TO_SPAIN_ROUTE = "M 128 156 C 184 66 253 72 320 147";
-const RETURN_ROUTE = "M 128 156 C 187 238 263 226 320 147";
+const US_TO_SPAIN_ROUTE = "M 609.39 275.96 C 735 94 936 96 1064.5 279.2";
+const RETURN_ROUTE = "M 609.39 275.96 C 735 460 936 460 1064.5 279.2";
 
 export function WarehouseBackdrop() {
   return <div className="hero-backdrop" aria-hidden="true" />;
@@ -22,7 +22,7 @@ export function RouteMap() {
     <div className="hero-map-overlay">
       <svg
         className="hero-route-map"
-        viewBox="0 0 620 360"
+        viewBox="400 0 1640 754"
         fill="none"
         role="img"
         aria-labelledby="hero-map-title hero-map-description"
@@ -35,20 +35,21 @@ export function RouteMap() {
           routes. This is not live shipment tracking.
         </desc>
         <defs>
-          <pattern
-            id="hero-map-dots"
-            width="8"
-            height="8"
-            patternUnits="userSpaceOnUse"
-          >
-            <circle cx="2" cy="2" r="1.45" fill="#62E3DF" fillOpacity=".8" />
-          </pattern>
-          <linearGradient id="hero-route-gradient" x1="128" y1="156" x2="320" y2="147">
+          <linearGradient id="hero-route-gradient" x1="609.39" y1="275.96" x2="1064.5" y2="279.2">
             <stop stopColor="#1D67F2" />
             <stop offset="1" stopColor="#62E3DF" />
           </linearGradient>
+          <filter id="hero-map-isolate-dots" colorInterpolationFilters="sRGB">
+            <feColorMatrix
+              type="matrix"
+              values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                .34 1.14 .12 0 -.192"
+            />
+          </filter>
           <filter id="hero-route-glow" x="-100%" y="-100%" width="300%" height="300%">
-            <feGaussianBlur stdDeviation="3.2" result="blur" />
+            <feGaussianBlur stdDeviation="6" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -56,97 +57,48 @@ export function RouteMap() {
           </filter>
         </defs>
 
-        <path
-          className="hero-map-continent"
-          fill="url(#hero-map-dots)"
-          d="M34 84 22 75 17 62 25 51 38 51 48 59 62 53 69 45 81 49 91 43 108 49 120 45 138 53 153 54 165 61 180 65 192 72 208 77 221 88 231 96 224 107 214 114 208 124 196 127 191 138 180 141 175 153 166 157 161 168 151 171 144 163 138 151 129 146 118 140 109 130 96 130 87 121 75 119 69 110 56 106 49 96 38 94Z"
-        />
-        <path
-          className="hero-map-continent"
-          fill="url(#hero-map-dots)"
-          d="M32 82 19 81 12 74 18 66 31 68 39 74Z"
-        />
-        <path
-          className="hero-map-continent"
-          fill="url(#hero-map-dots)"
-          d="m177 57 16-9 20 6 5 14-13 15-16-5-10-10z"
-        />
-        <path
-          className="hero-map-continent"
-          fill="url(#hero-map-dots)"
-          d="m154 163 13 8 6 11 8 11 9 6-5 6-10-6-8-10-8-9z"
-        />
-        <path
-          className="hero-map-continent"
-          fill="url(#hero-map-dots)"
-          d="m185 201 19 5 14 13 8 16-3 14 10 10-8 18-7 15-7 19-12 19-7-15 3-19-11-16 3-16-9-14 4-16-8-14z"
-        />
-        <path
-          className="hero-map-continent"
-          fill="url(#hero-map-dots)"
-          d="M300 120 307 111 317 109 322 101 333 102 340 107 350 104 358 111 369 110 380 117 386 125 377 131 366 129 359 137 348 139 341 147 330 145 324 139 315 140 309 134 300 132Z"
-        />
-        <path
-          className="hero-map-continent"
-          fill="url(#hero-map-dots)"
-          d="M310 136 325 138 333 145 329 154 317 157 306 152 301 144Z"
-        />
-        <path
-          className="hero-map-continent"
-          fill="url(#hero-map-dots)"
-          d="M346 103 348 91 356 78 364 81 363 94 369 104 364 111 356 106Z"
-        />
-        <path
-          className="hero-map-continent"
-          fill="url(#hero-map-dots)"
-          d="M294 111 299 106 302 112 299 120 294 117Z"
-        />
-        <path
-          className="hero-map-continent"
-          fill="url(#hero-map-dots)"
-          d="m365 85 24-11 25 4 19-7 26 7 19-5 22 10 20-1 21 11 6 17-13 9-18-4-13 12-18-3-12 14-20-7-13 13-19-5-13-12-20 6-11-16-18-2-9-13-15-3z"
-        />
-        <path
-          className="hero-map-continent"
-          fill="url(#hero-map-dots)"
-          d="m420 139 14 13 4 18-9 18-8-17-6-16z"
-        />
-        <path
-          className="hero-map-continent"
-          fill="url(#hero-map-dots)"
-          d="m497 221 18-6 18 5 14 10-6 14-15 6-14-6-11-7z"
+        <image
+          href="/images/trackflow-coverage-map-v2.png"
+          x="0"
+          y="0"
+          width="2084"
+          height="754"
+          filter="url(#hero-map-isolate-dots)"
         />
         <path
           className="hero-map-route hero-map-route--primary"
           d={US_TO_SPAIN_ROUTE}
           stroke="url(#hero-route-gradient)"
-          strokeWidth="2.2"
+          strokeWidth="6"
           strokeOpacity=".92"
         />
         <path
           className="hero-map-route hero-map-route--secondary"
           d={RETURN_ROUTE}
           stroke="#1D67F2"
-          strokeWidth="1.4"
+          strokeWidth="4"
           strokeOpacity=".66"
           strokeDasharray="2 8"
         />
 
-        <circle className="hero-node-pulse" cx="128" cy="156" r="13" />
-        <circle cx="128" cy="156" r="6" fill="#62E3DF" fillOpacity=".2" />
-        <circle cx="128" cy="156" r="3.2" fill="#F3F6F8" />
-        <circle className="hero-node-pulse hero-node-pulse--delayed" cx="320" cy="147" r="13" />
-        <circle cx="320" cy="147" r="6" fill="#62E3DF" fillOpacity=".2" />
-        <circle cx="320" cy="147" r="3.2" fill="#F3F6F8" />
+        <path className="hero-map-label-connector" d="M 632 224 L 598 258" />
+        <path className="hero-map-label-connector" d="M 1083 245 L 1077 260" />
 
-        <g className="hero-map-label">
-          <rect className="hero-map-label-background" x="17" y="28" width="164" height="44" rx="7" />
+        <circle className="hero-node-pulse" cx="609.39" cy="275.96" r="22" />
+        <circle cx="609.39" cy="275.96" r="18" fill="#62E3DF" fillOpacity=".2" />
+        <circle cx="609.39" cy="275.96" r="10" fill="#F3F6F8" />
+        <circle className="hero-node-pulse hero-node-pulse--delayed" cx="1064.5" cy="279.2" r="22" />
+        <circle cx="1064.5" cy="279.2" r="18" fill="#62E3DF" fillOpacity=".2" />
+        <circle cx="1064.5" cy="279.2" r="10" fill="#F3F6F8" />
+
+        <g className="hero-map-label" transform="translate(356 106) scale(1.4)">
+          <rect className="hero-map-label-background" x="17" y="28" width="180" height="56" rx="7" />
           <svg
             aria-hidden="true"
             x="29"
             y="43"
-            width="22"
-            height="11.58"
+            width="30"
+            height="15.8"
             viewBox="0 0 38 20"
             fill="none"
             stroke="none"
@@ -176,10 +128,10 @@ export function RouteMap() {
             <rect width="15.2" height="10.77" fill="url(#hero-us-star-grid)" />
           </svg>
           <text className="hero-map-country" x="54" y="51">UNITED STATES</text>
-          <text className="hero-map-city" x="54" y="64">Los Angeles</text>
+          <text className="hero-map-city" x="54" y="77">Los Angeles</text>
         </g>
-        <g className="hero-map-label">
-          <rect className="hero-map-label-background" x="411" y="39" width="154" height="44" rx="7" />
+        <g className="hero-map-label" transform="translate(508 109) scale(1.4)">
+          <rect className="hero-map-label-background" x="411" y="39" width="154" height="58" rx="7" />
           <svg
             aria-hidden="true"
             x="421"
@@ -237,7 +189,7 @@ export function RouteMap() {
             </g>
           </svg>
           <text className="hero-map-country" x="448" y="62">SPAIN</text>
-          <text className="hero-map-city" x="448" y="75">Zaragoza</text>
+          <text className="hero-map-city" x="448" y="86">Zaragoza</text>
         </g>
 
         {!reducedMotion && (

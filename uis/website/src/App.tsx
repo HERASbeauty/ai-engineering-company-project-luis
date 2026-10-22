@@ -83,41 +83,6 @@ function BenefitIcon({ name }: { name: BenefitIconName }) {
   );
 }
 
-function WhyNetworkDecoration() {
-  return (
-    <svg className="why-network" viewBox="0 0 390 150" fill="none" aria-hidden="true">
-      <defs>
-        <pattern id="why-network-dots" width="6" height="6" patternUnits="userSpaceOnUse">
-          <circle cx="1.6" cy="1.6" r="1" fill="#62E3DF" fillOpacity=".42" />
-        </pattern>
-        <path id="why-network-atlantic-route" d="M 101 69 C 145 19, 202 18, 250 60" />
-        <filter id="why-network-glow" x="-20%" y="-60%" width="140%" height="220%">
-          <feGaussianBlur stdDeviation="4" />
-        </filter>
-      </defs>
-      <g fill="url(#why-network-dots)">
-        <path d="m34 41 9-10 17-6 14 4 10-4 13 7 4 10 12 3 6 11-5 8-12 1-5 8-11-1-4 11-9 4-5-9-12-3-5-9-12-2-8-11-11-4 4-8Z" />
-        <path d="m112 84 9 4 4 10 8 6-2 12-7 9-3 13-6-3-2-12-7-11 2-12-6-8Z" />
-        <path d="m121 21 11-6 12 3 5 8-8 6-11-2Z" />
-        <path d="m178 48 8-8 13 1 8-5 10 4 10-5 16 3 8-5 19 6 12-2 22 9 18 4 9 10-10 6-17-4-13 7-12-3-13 9-10-3-9 8-12-4-7-10-12-1-6-8-12 3-6-8-12-2Z" />
-        <path d="m197 75 12 2 9 11 2 12-7 13-3 15-8 8-6-8-2-15-8-12 3-14-5-7Z" />
-        <path d="m305 103 10-5 14 3 8 8-5 8-13 2-10-5Z" />
-      </g>
-      <use href="#why-network-atlantic-route" stroke="#62E3DF" strokeWidth="8" strokeLinecap="round" opacity=".42" filter="url(#why-network-glow)" />
-      <use href="#why-network-atlantic-route" stroke="#62E3DF" strokeWidth="1.8" strokeLinecap="round" strokeDasharray="2 5" opacity=".95" />
-      <g>
-        <circle cx="101" cy="69" r="8" fill="#62E3DF" fillOpacity=".14" />
-        <circle cx="101" cy="69" r="4.2" fill="#62E3DF" stroke="#071422" strokeWidth="1.5" />
-        <circle cx="250" cy="60" r="8" fill="#62E3DF" fillOpacity=".14" />
-        <circle cx="250" cy="60" r="4.2" fill="#F3F6F8" stroke="#62E3DF" strokeWidth="1.5" />
-      </g>
-      <path d="M101 79v21m149-11v11" stroke="#62E3DF" strokeOpacity=".65" strokeWidth="1" />
-      <text x="101" y="115" textAnchor="middle" fill="#F3F6F8" fontFamily="Inter, sans-serif" fontSize="9" fontWeight="600" letterSpacing=".08em">LOS ANGELES</text>
-      <text x="250" y="115" textAnchor="middle" fill="#F3F6F8" fontFamily="Inter, sans-serif" fontSize="9" fontWeight="600" letterSpacing=".08em">ZARAGOZA</text>
-    </svg>
-  );
-}
-
 const coverage = [
   {
     label: "North America",
@@ -321,7 +286,6 @@ function App() {
                 </h2>
                 <p className="why-subtitle">Two markets. One connected logistics operation.</p>
               </div>
-              <WhyNetworkDecoration />
             </div>
             <div className="why-grid">
               {benefits.map((benefit, index) => (
