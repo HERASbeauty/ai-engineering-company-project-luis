@@ -42,28 +42,28 @@ const benefits = [
     title: "Binational operations",
     description: "Infrastructure in the United States and Spain.",
     icon: "network",
-    image: "/images/trackflow-why-binational.png",
+    image: "/images/trackflow-why-binational.webp",
   },
   {
     number: "02",
     title: "Approx. 130 professionals",
     description: "A dedicated team supporting logistics operations.",
     icon: "people",
-    image: "/images/trackflow-why-team.png",
+    image: "/images/trackflow-why-team.webp",
   },
   {
     number: "03",
     title: "E-commerce specialization",
     description: "Fashion, electronics and cosmetics.",
     icon: "commerce",
-    image: "/images/trackflow-why-ecommerce.png",
+    image: "/images/trackflow-why-ecommerce.webp",
   },
   {
     number: "04",
     title: "End-to-end services",
     description: "Warehousing, last-mile delivery and reverse logistics.",
     icon: "truck",
-    image: "/images/trackflow-why-end-to-end.png",
+    image: "/images/trackflow-why-end-to-end.webp",
   },
 ];
 

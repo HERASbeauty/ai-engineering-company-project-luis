@@ -58,7 +58,7 @@ export function RouteMap() {
         </defs>
 
         <image
-          href="/images/trackflow-coverage-map-v2.png"
+          href="/images/trackflow-coverage-map-v2.webp"
           x="0"
           y="0"
           width="2084"

@@ -102,7 +102,7 @@
 .hero-backdrop {
   z-index: -2;
   overflow: hidden;
-  background-image: url("/images/trackflow-warehouse-hero.png");
+  background-image: url("/images/trackflow-warehouse-hero.webp");
   background-position: center 55%;
   background-size: cover;
 }

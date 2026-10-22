@@ -110,7 +110,8 @@ function CoverageMap() {
         className="coverage-map-art"
         decoding="async"
         height="754"
-        src="/images/trackflow-coverage-map-v2-pinpoint.png"
+        loading="lazy"
+        src="/images/trackflow-coverage-map-v2-pinpoint.webp"
         width="2084"
       />
       <div className="coverage-map-shading" />
