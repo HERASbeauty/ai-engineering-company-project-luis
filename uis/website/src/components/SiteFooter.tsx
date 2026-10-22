@@ -1,3 +1,5 @@
+import "./SiteFooter.css";
+
 type SiteFooterProps = {
   onNavigate: () => void;
 };
@@ -9,43 +11,69 @@ const footerLinks = [
   { href: "/#contact", label: "Contact" },
 ];
 
+const footerServices = [
+  "Warehousing",
+  "Last-mile delivery",
+  "Reverse logistics",
+  "E-commerce specialization",
+];
+
 export function SiteFooter({ onNavigate }: SiteFooterProps) {
   return (
-    <footer className="bg-[#071522] text-slate-200">
-      <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-12 xl:px-16">
-        <div className="flex flex-col gap-8 border-b border-white/15 pb-8 md:flex-row md:items-center md:justify-between">
-          <a className="inline-flex min-h-11 items-center gap-2 rounded-sm text-[#F3F6F8] no-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-300" href="/#home" onClick={onNavigate} aria-label="TrackFlow home">
+    <footer className="site-footer">
+      <div className="site-footer__container">
+        <div className="site-footer__grid">
+          <div className="site-footer__brand">
+            <a href="/#home" onClick={onNavigate} aria-label="TrackFlow home">
             <img
-              className="h-auto w-[172px] max-w-full sm:w-[190px]"
+              className="site-footer__logo"
               src="/trackflow-logo-dark.svg"
               alt="TrackFlow"
               width="410"
               height="100"
             />
-          </a>
-          <nav aria-label="Footer navigation">
-            <ul className="m-0 flex list-none flex-wrap gap-x-5 gap-y-2 p-0">
-            {footerLinks.map((link) => (
-              <li key={link.href}>
-                <a className="inline-flex min-h-11 items-center text-sm text-slate-300 no-underline underline-offset-4 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300 md:hover:underline" href={link.href} onClick={onNavigate}>
+            </a>
+            <p>Two markets. One connected logistics operation.</p>
+          </div>
+
+          <nav className="site-footer__group" aria-label="Quick links">
+            <h2>Quick links</h2>
+            <ul>
+              {footerLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} onClick={onNavigate}>
                   {link.label}
-                </a>
-              </li>
-            ))}
+                  </a>
+                </li>
+              ))}
             </ul>
           </nav>
-          <a className="inline-flex min-h-11 items-center text-sm font-semibold text-sky-300 no-underline underline-offset-4 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300 md:hover:underline" href="https://linkedin.com/company/trackflow" target="_blank" rel="noreferrer" aria-label="TrackFlow on LinkedIn (opens in a new tab)">
-            LinkedIn <span className="ml-2" aria-hidden="true">↗</span>
-          </a>
+
+          <div className="site-footer__group">
+            <h2>Services</h2>
+            <ul>
+              {footerServices.map((service) => (
+                <li key={service}><a href="/#services" onClick={onNavigate}>{service}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="site-footer__group">
+            <h2>Markets</h2>
+            <ul><li>United States</li><li>Spain</li></ul>
+          </div>
+
+          <div className="site-footer__group site-footer__social">
+            <h2>Follow us</h2>
+            <a href="https://linkedin.com/company/trackflow" target="_blank" rel="noreferrer" aria-label="TrackFlow on LinkedIn (opens in a new tab)">
+              <span aria-hidden="true">in</span> LinkedIn
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-3 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs leading-6 text-slate-400">© {new Date().getFullYear()} TrackFlow. All rights reserved.</p>
-          <a
-            className="inline-flex min-h-11 items-center text-sm font-semibold text-sky-300 no-underline underline-offset-4 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300 md:hover:underline"
-            href="/privacy.html"
-          >
-            Privacy Information
-          </a>
+
+        <div className="site-footer__legal">
+          <p>© {new Date().getFullYear()} TrackFlow. All rights reserved.</p>
+          <a href="/privacy.html">Privacy Policy</a>
         </div>
       </div>
     </footer>

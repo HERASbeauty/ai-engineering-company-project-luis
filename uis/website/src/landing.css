@@ -1344,3 +1344,273 @@
     display: none;
   }
 }
+
+.contact-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 4.5rem 0 7.5rem;
+  background: #f3f6f8;
+  color: #071422;
+}
+
+.contact-container {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 3rem, 80rem);
+  margin-inline: auto;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
+  align-items: center;
+  gap: 4rem;
+}
+
+.contact-copy {
+  min-width: 0;
+  max-width: 43rem;
+}
+
+.contact-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.35rem;
+  color: #1d67f2;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.contact-eyebrow span {
+  width: 1.5rem;
+  height: 1px;
+  flex: 0 0 auto;
+  background: currentColor;
+}
+
+.contact-title {
+  max-width: 12ch;
+  color: #071422;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 3.75rem;
+  font-weight: 700;
+  line-height: 1.02;
+}
+
+.contact-title span {
+  color: #1d67f2;
+}
+
+.contact-description {
+  max-width: 38rem;
+  margin-top: 1.1rem;
+  color: #52657a;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.contact-cta {
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 0.4rem;
+  background: #1d67f2;
+  box-shadow: 0 0.5rem 1.4rem rgb(29 103 242 / 18%);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.contact-cta:hover {
+  transform: translateY(-2px);
+  background: #1556d4;
+}
+
+.contact-cta span {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.contact-note {
+  margin-top: 0.75rem;
+  color: #64788c;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.contact-panel {
+  min-width: 0;
+  padding: 1.75rem;
+  border: 1px solid #e1e9ef;
+  border-radius: 0.5rem;
+  background: #fff;
+  box-shadow: 0 0.75rem 2rem rgb(7 20 34 / 5%);
+}
+
+.contact-panel h3 {
+  margin-bottom: 1.1rem;
+  color: #071422;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.contact-panel__item {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 0.85rem;
+}
+
+.contact-panel__icon {
+  display: grid;
+  width: 3.1rem;
+  height: 3.1rem;
+  flex: 0 0 3.1rem;
+  place-items: center;
+  border-radius: 50%;
+  background: #edf3ff;
+  color: #1d67f2;
+}
+
+.contact-panel__icon-art {
+  display: block;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex: 0 0 auto;
+}
+
+.contact-panel__copy {
+  display: grid;
+  min-width: 0;
+  gap: 0.18rem;
+  color: #344b61;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.contact-panel__copy strong {
+  color: #071422;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.contact-panel__copy small {
+  color: #64788c;
+  font-size: 0.78rem;
+}
+
+.contact-panel__copy a {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.35rem;
+  color: #52657a;
+  overflow-wrap: anywhere;
+}
+
+.contact-panel__copy a:hover {
+  color: #1d67f2;
+}
+
+.contact-panel__copy a .contact-panel__icon-art {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.contact-panel__divider {
+  height: 1px;
+  margin-left: 4.1rem;
+  background: #e6edf2;
+}
+
+.contact-globe {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: -1rem;
+  display: block;
+  width: 100%;
+  height: 22rem;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+@media (max-width: 56rem) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .contact-copy {
+    max-width: 44rem;
+  }
+
+  .contact-panel {
+    width: min(100%, 42rem);
+  }
+}
+
+@media (max-width: 42rem) {
+  .contact-section {
+    padding: 3.5rem 0 6.5rem;
+  }
+
+  .contact-container {
+    width: min(100% - 2rem, 80rem);
+  }
+
+  .contact-layout {
+    gap: 2rem;
+  }
+
+  .contact-title {
+    font-size: 2.55rem;
+  }
+
+  .contact-description {
+    font-size: 1rem;
+  }
+
+  .contact-cta {
+    width: 100%;
+  }
+
+  .contact-panel {
+    padding: 1.25rem;
+  }
+
+  .contact-panel__item {
+    gap: 0.8rem;
+  }
+
+  .contact-panel__icon {
+    width: 2.8rem;
+    height: 2.8rem;
+    flex-basis: 2.8rem;
+  }
+
+  .contact-panel__divider {
+    margin-left: 3.6rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-section {
+    padding-bottom: 4rem;
+  }
+
+  .contact-globe {
+    display: none;
+  }
+}

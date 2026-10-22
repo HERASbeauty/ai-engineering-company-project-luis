@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { CoverageSection } from "./components/CoverageSection";
+import { ContactSection } from "./components/ContactSection";
 import { ServiceCard } from "./components/ServiceCard";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
@@ -314,36 +315,7 @@ function App() {
           </div>
         </section>
 
-        <section
-          className="scroll-mt-24 bg-white pt-14 pb-16 sm:pt-18 sm:pb-20"
-          id="contact"
-          aria-labelledby="contact-title"
-        >
-          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 sm:px-8 md:grid-cols-[1fr_auto] md:items-center lg:px-12 xl:px-16">
-            <div>
-              <p className="text-xs font-bold uppercase text-signal-500">Contact</p>
-              <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold leading-tight text-brand-950 sm:text-5xl" id="contact-title">
-                Let’s talk about your operation.
-              </h2>
-              <a className="mt-6 inline-flex min-h-11 items-center rounded-sm text-base font-semibold text-brand-800 underline decoration-signal-500 underline-offset-4 hover:text-signal-500 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal-500" href="mailto:comercial@trackflow.com">
-                comercial@trackflow.com
-              </a>
-              <div className="mt-7 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
-                <a className="inline-flex min-h-11 items-center gap-3 text-sm text-slate-600 hover:text-brand-950 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal-500" href="tel:+12135550147">
-                  <span className="text-xs font-bold uppercase text-slate-500">Los Angeles</span>
-                  <span className="font-semibold text-brand-950">+1 213 555 0147</span>
-                </a>
-                <a className="inline-flex min-h-11 items-center gap-3 text-sm text-slate-600 hover:text-brand-950 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal-500" href="tel:+34976123456">
-                  <span className="text-xs font-bold uppercase text-slate-500">Zaragoza</span>
-                  <span className="font-semibold text-brand-950">+34 976 123 456</span>
-                </a>
-              </div>
-            </div>
-            <a className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#1D67F2] px-5 text-sm font-bold text-white no-underline transition-colors hover:bg-[#1758D2] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#62E3DF] motion-reduce:transition-none" href="/application.html">
-              Request information <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        </section>
+        <ContactSection />
       </main>
       <SiteFooter onNavigate={() => setMenuOpen(false)} />
     </>
