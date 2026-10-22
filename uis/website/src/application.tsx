@@ -162,9 +162,15 @@ function ApplicationPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
       <SiteHeader menuOpen={menuOpen} onMenuToggle={setMenuOpen} />
 
-      <main className="mx-auto max-w-4xl px-5 py-10 sm:px-8 sm:py-14">
+      <main
+        className="mx-auto max-w-4xl px-5 py-10 sm:px-8 sm:py-14"
+        id="main-content"
+      >
         <div className="mb-8 max-w-2xl">
           <p className="text-sm font-bold uppercase tracking-[0.16em] text-sky-800">
             B2B logistics inquiry
@@ -628,6 +634,7 @@ function ApplicationPage() {
                   aria-invalid={Boolean(errors.comments)}
                   className={`${controlClassName} min-h-32 resize-y ${errors.comments ? "border-red-700 focus:border-red-700 focus:ring-red-700/20" : ""}`}
                   id="comments"
+                  maxLength={500}
                   name="comments"
                   onBlur={() => handleBlur("comments")}
                   onChange={(event) =>

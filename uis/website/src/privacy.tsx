@@ -9,9 +9,15 @@ function PrivacyInformationPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
       <SiteHeader menuOpen={menuOpen} onMenuToggle={setMenuOpen} />
 
-      <main className="mx-auto max-w-4xl px-5 py-10 sm:px-8 sm:py-16">
+      <main
+        className="mx-auto max-w-4xl px-5 py-10 sm:px-8 sm:py-16"
+        id="main-content"
+      >
         <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
           <p className="text-sm font-bold uppercase tracking-[0.16em] text-sky-800">
             Portfolio / academy project

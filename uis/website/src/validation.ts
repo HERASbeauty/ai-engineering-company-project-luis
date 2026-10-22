@@ -95,7 +95,9 @@ export function validateField<Field extends FormField>(
     case "phone": {
       const phone = values.phone.trim();
       const digitCount = phone.replace(/\D/g, "").length;
-      return /^\+\s*\d[\d\s().-]*\d$/.test(phone) && digitCount >= 2
+      return /^\+\s*\d[\d\s().-]*\d$/.test(phone) &&
+        digitCount >= 7 &&
+        digitCount <= 15
         ? undefined
         : "Phone must include a country code (e.g., +1 213 555 0147).";
     }
