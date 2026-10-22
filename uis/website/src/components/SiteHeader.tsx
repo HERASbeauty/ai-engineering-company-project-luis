@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
 const links = [
-  { href: "#home", label: "Home" },
-  { href: "#services", label: "Services" },
-  { href: "#coverage", label: "Coverage" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#home", label: "Home" },
+  { href: "/#services", label: "Services" },
+  { href: "/#coverage", label: "Coverage" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 type SiteHeaderProps = {
@@ -26,17 +26,18 @@ export function SiteHeader({ menuOpen, onMenuToggle }: SiteHeaderProps) {
     <header className="site-header sticky top-0 z-40 border-b border-white/10 bg-[#071422]/95 backdrop-blur-xl">
       <div className="mx-auto flex min-h-[76px] max-w-7xl items-center justify-between gap-4 px-5 sm:px-8 lg:px-12 xl:px-16">
         <a
-          className="inline-flex min-h-11 items-center gap-2 rounded-sm text-[#F3F6F8] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#62E3DF]"
-          href="#home"
+          className="inline-flex min-h-11 items-center gap-2 rounded-sm text-[#F3F6F8] no-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#62E3DF]"
+          href="/#home"
           aria-label="TrackFlow home"
           onClick={() => onMenuToggle(false)}
         >
-          <svg className="size-9 text-[#62E3DF]" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-              <path d="M4 10h18a8 8 0 1 1 0 16h-8M4 17h18a2 2 0 1 1 0 4h-8M4 24h6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-            </svg>
-          <span className="font-display text-xl font-bold tracking-normal">
-            TRACK<span className="text-[#62E3DF]">FLOW</span>
-          </span>
+          <img
+            className="h-auto w-[172px] max-w-[calc(100vw-8.5rem)] sm:w-[190px]"
+            src="/trackflow-logo-dark.svg"
+            alt="TrackFlow"
+            width="410"
+            height="100"
+          />
         </a>
 
         <button
@@ -62,7 +63,7 @@ export function SiteHeader({ menuOpen, onMenuToggle }: SiteHeaderProps) {
         >
           {links.map((link) => (
             <a
-              className="flex min-h-12 items-center rounded-md px-4 text-sm font-semibold text-[#F3F6F8]/85 transition-colors hover:bg-white/5 hover:text-[#62E3DF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#62E3DF] motion-reduce:transition-none md:min-h-11"
+              className="flex min-h-12 items-center rounded-md px-4 text-sm font-semibold text-[#F3F6F8]/85 no-underline transition-colors hover:bg-white/5 hover:text-[#62E3DF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#62E3DF] motion-reduce:transition-none md:min-h-11 md:hover:underline"
               href={link.href}
               key={link.href}
               onClick={() => onMenuToggle(false)}
@@ -71,7 +72,7 @@ export function SiteHeader({ menuOpen, onMenuToggle }: SiteHeaderProps) {
             </a>
           ))}
           <a
-            className="mt-3 inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#1D67F2] px-5 text-sm font-bold text-white transition-colors hover:bg-[#1758D2] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#62E3DF] motion-reduce:transition-none md:ml-2 md:mt-0"
+            className="mt-3 inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#1D67F2] px-5 text-sm font-bold text-white no-underline transition-colors hover:bg-[#1758D2] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#62E3DF] motion-reduce:transition-none md:ml-2 md:mt-0"
             href="/application.html"
           >
             Request information <span aria-hidden="true">→</span>

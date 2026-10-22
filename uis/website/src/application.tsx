@@ -1,6 +1,8 @@
 import { StrictMode, useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
+import { SiteFooter } from "./components/SiteFooter";
+import { SiteHeader } from "./components/SiteHeader";
 import {
   FORM_FIELDS,
   OPERATING_COUNTRIES,
@@ -60,6 +62,7 @@ function ApplicationPage() {
   const [touched, setTouched] = useState<Set<FormField>>(() => new Set());
   const [showLowVolumeWarning, setShowLowVolumeWarning] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const warningHeadingRef = useRef<HTMLHeadingElement>(null);
   const successHeadingRef = useRef<HTMLHeadingElement>(null);
@@ -159,23 +162,7 @@ function ApplicationPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
-      <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex min-h-18 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
-          <a
-            aria-label="TrackFlow public website"
-            className="rounded-sm text-xl font-bold tracking-tight text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-700"
-            href="/"
-          >
-            TrackFlow
-          </a>
-          <a
-            className="inline-flex min-h-11 items-center rounded-md px-3 text-sm font-semibold text-slate-700 underline-offset-4 hover:text-sky-800 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700"
-            href="/"
-          >
-            Return to website
-          </a>
-        </div>
-      </header>
+      <SiteHeader menuOpen={menuOpen} onMenuToggle={setMenuOpen} />
 
       <main className="mx-auto max-w-4xl px-5 py-10 sm:px-8 sm:py-14">
         <div className="mb-8 max-w-2xl">
@@ -677,9 +664,9 @@ function ApplicationPage() {
                   Privacy policy <span className="text-red-700">*</span>
                 </legend>
                 <p className="text-sm leading-6 text-amber-950">
-                  <strong>Pending:</strong> no approved privacy policy is
-                  available yet. This demonstration does not submit or store
-                  information.
+                  <strong>Demonstration privacy information:</strong> this form
+                  is simulated and does not submit or store your entries. Read
+                  the <a className="font-semibold underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700" href="/privacy.html">Privacy Information</a> before continuing.
                 </p>
                 <label className="mt-4 flex items-start gap-3 text-sm leading-6 text-slate-800">
                   <input
@@ -700,13 +687,13 @@ function ApplicationPage() {
                     type="checkbox"
                   />
                   <span>
-                    I understand that the privacy policy is pending and that
-                    this demonstration will not submit or store my information.
+                    I acknowledge this demonstration&apos;s privacy information
+                    and understand that my form entries are not submitted or
+                    stored.
                   </span>
                 </label>
                 <p className="sr-only" id="privacyAcknowledged-hint">
-                  Acknowledge the pending policy to continue with this
-                  demonstration.
+                  Acknowledge the demonstration privacy information to continue.
                 </p>
                 <FieldError
                   id="privacyAcknowledged-error"
@@ -730,6 +717,7 @@ function ApplicationPage() {
           </>
         )}
       </main>
+      <SiteFooter onNavigate={() => undefined} />
     </div>
   );
 }

@@ -140,7 +140,7 @@ export function validateField<Field extends FormField>(
     case "privacyAcknowledged":
       return values.privacyAcknowledged
         ? undefined
-        : "Please acknowledge that the privacy policy is pending.";
+        : "Please acknowledge the demonstration privacy information to continue.";
     default:
       return undefined;
   }

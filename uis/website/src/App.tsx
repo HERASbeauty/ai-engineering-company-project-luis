@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { SectionHeading } from "./components/SectionHeading";
+import { useEffect, useState, type ReactNode } from "react";
 import { CoverageSection } from "./components/CoverageSection";
 import { ServiceCard } from "./components/ServiceCard";
 import { SiteFooter } from "./components/SiteFooter";
@@ -39,26 +38,85 @@ const services = [
 const benefits = [
   {
     number: "01",
-    title: "Binational operation",
-    description:
-      "The only operator with own infrastructure in the United States and Spain.",
+    title: "Binational operations",
+    description: "Infrastructure in the United States and Spain.",
+    icon: "network",
+    image: "/images/trackflow-why-binational.png",
   },
   {
     number: "02",
-    title: "+130 professionals",
-    description: "Dedicated to your logistics.",
+    title: "Approx. 130 professionals",
+    description: "A dedicated team supporting logistics operations.",
+    icon: "people",
+    image: "/images/trackflow-why-team.png",
   },
   {
     number: "03",
-    title: "Own technology",
-    description: "For total visibility of your inventory.",
+    title: "E-commerce specialization",
+    description: "Fashion, electronics and cosmetics.",
+    icon: "commerce",
+    image: "/images/trackflow-why-ecommerce.png",
   },
   {
     number: "04",
-    title: "E-commerce specialization",
-    description: "Fashion, electronics, and cosmetics.",
+    title: "End-to-end services",
+    description: "Warehousing, last-mile delivery and reverse logistics.",
+    icon: "truck",
+    image: "/images/trackflow-why-end-to-end.png",
   },
 ];
+
+type BenefitIconName = "network" | "people" | "commerce" | "truck";
+
+function BenefitIcon({ name }: { name: BenefitIconName }) {
+  const paths: Record<BenefitIconName, ReactNode> = {
+    network: <><circle cx="6" cy="7" r="2.25" /><circle cx="18" cy="17" r="2.25" /><circle cx="18" cy="6" r="1.5" /><path d="m8 8.2 7.9 7.1M8.2 6.8l8.3-.6M6.8 9.2l-.3 8.5 9.2-.5" /></>,
+    people: <><circle cx="9" cy="8" r="3" /><path d="M3.5 19v-1.2a5.5 5.5 0 0 1 11 0V19zM16 5.4a3 3 0 0 1 0 5.8m1.2 2.1a4.7 4.7 0 0 1 3.3 4.5V19h-3" /></>,
+    commerce: <><path d="M3 4h2l2.2 10.1a2 2 0 0 0 2 1.6h8.1a2 2 0 0 0 1.9-1.5L21 8H6" /><circle cx="10" cy="19" r="1.2" /><circle cx="17" cy="19" r="1.2" /></>,
+    truck: <><path d="M3 6h11v11H3zM14 10h4l3 3v4h-7z" /><circle cx="7.5" cy="18" r="2" /><circle cx="17.5" cy="18" r="2" /></>,
+  };
+
+  return (
+    <svg aria-hidden="true" className="why-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      {paths[name]}
+    </svg>
+  );
+}
+
+function WhyNetworkDecoration() {
+  return (
+    <svg className="why-network" viewBox="0 0 390 150" fill="none" aria-hidden="true">
+      <defs>
+        <pattern id="why-network-dots" width="6" height="6" patternUnits="userSpaceOnUse">
+          <circle cx="1.6" cy="1.6" r="1" fill="#62E3DF" fillOpacity=".42" />
+        </pattern>
+        <path id="why-network-atlantic-route" d="M 101 69 C 145 19, 202 18, 250 60" />
+        <filter id="why-network-glow" x="-20%" y="-60%" width="140%" height="220%">
+          <feGaussianBlur stdDeviation="4" />
+        </filter>
+      </defs>
+      <g fill="url(#why-network-dots)">
+        <path d="m34 41 9-10 17-6 14 4 10-4 13 7 4 10 12 3 6 11-5 8-12 1-5 8-11-1-4 11-9 4-5-9-12-3-5-9-12-2-8-11-11-4 4-8Z" />
+        <path d="m112 84 9 4 4 10 8 6-2 12-7 9-3 13-6-3-2-12-7-11 2-12-6-8Z" />
+        <path d="m121 21 11-6 12 3 5 8-8 6-11-2Z" />
+        <path d="m178 48 8-8 13 1 8-5 10 4 10-5 16 3 8-5 19 6 12-2 22 9 18 4 9 10-10 6-17-4-13 7-12-3-13 9-10-3-9 8-12-4-7-10-12-1-6-8-12 3-6-8-12-2Z" />
+        <path d="m197 75 12 2 9 11 2 12-7 13-3 15-8 8-6-8-2-15-8-12 3-14-5-7Z" />
+        <path d="m305 103 10-5 14 3 8 8-5 8-13 2-10-5Z" />
+      </g>
+      <use href="#why-network-atlantic-route" stroke="#62E3DF" strokeWidth="8" strokeLinecap="round" opacity=".42" filter="url(#why-network-glow)" />
+      <use href="#why-network-atlantic-route" stroke="#62E3DF" strokeWidth="1.8" strokeLinecap="round" strokeDasharray="2 5" opacity=".95" />
+      <g>
+        <circle cx="101" cy="69" r="8" fill="#62E3DF" fillOpacity=".14" />
+        <circle cx="101" cy="69" r="4.2" fill="#62E3DF" stroke="#071422" strokeWidth="1.5" />
+        <circle cx="250" cy="60" r="8" fill="#62E3DF" fillOpacity=".14" />
+        <circle cx="250" cy="60" r="4.2" fill="#F3F6F8" stroke="#62E3DF" strokeWidth="1.5" />
+      </g>
+      <path d="M101 79v21m149-11v11" stroke="#62E3DF" strokeOpacity=".65" strokeWidth="1" />
+      <text x="101" y="115" textAnchor="middle" fill="#F3F6F8" fontFamily="Inter, sans-serif" fontSize="9" fontWeight="600" letterSpacing=".08em">LOS ANGELES</text>
+      <text x="250" y="115" textAnchor="middle" fill="#F3F6F8" fontFamily="Inter, sans-serif" fontSize="9" fontWeight="600" letterSpacing=".08em">ZARAGOZA</text>
+    </svg>
+  );
+}
 
 const coverage = [
   {
@@ -81,6 +139,13 @@ const coverage = [
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const targetId = window.location.hash.slice(1);
+    if (!targetId) return;
+
+    document.getElementById(targetId)?.scrollIntoView();
+  }, []);
 
   return (
     <>
@@ -246,21 +311,39 @@ function App() {
 
         <CoverageSection regions={coverage} />
 
-        <section className="bg-brand-950 py-20 text-white sm:py-24" aria-labelledby="why-title">
-          <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12 xl:px-16">
-            <SectionHeading
-              eyebrow="Why TrackFlow"
-              title="An operation built for e-commerce."
-              description="A binational team, infrastructure, and technology focused on your logistics."
-              id="why-title"
-              light
-            />
-            <div className="mt-12 grid grid-cols-1 gap-x-8 md:grid-cols-2 xl:grid-cols-4">
-              {benefits.map((benefit) => (
-                <article className="border-t border-white/20 py-6 sm:py-7" key={benefit.number}>
-                  <span className="font-display text-sm font-semibold text-sky-300">{benefit.number}</span>
-                  <h3 className="mt-5 font-display text-xl font-semibold text-white">{benefit.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-300">{benefit.description}</p>
+        <section className="why-section" aria-labelledby="why-title">
+          <div className="why-container">
+            <div className="why-intro">
+              <div className="why-copy">
+                <p className="why-eyebrow">Why TrackFlow</p>
+                <h2 className="why-title" id="why-title">
+                  Built for the way <span>commerce</span> moves.
+                </h2>
+                <p className="why-subtitle">Two markets. One connected logistics operation.</p>
+              </div>
+              <WhyNetworkDecoration />
+            </div>
+            <div className="why-grid">
+              {benefits.map((benefit, index) => (
+                <article className={`why-card why-card--${index + 1}`} key={benefit.number}>
+                  <img className="why-card-image" src={benefit.image} alt="" loading="lazy" decoding="async" />
+                  <div className="why-card-content">
+                    <div className="why-card-topline">
+                      <span className="why-card-icon-wrap"><BenefitIcon name={benefit.icon as BenefitIconName} /></span>
+                      <span className="why-card-number">{benefit.number}</span>
+                    </div>
+                    <div className="why-card-copy">
+                      <h3>{benefit.title}</h3>
+                      <p>{benefit.description}</p>
+                    </div>
+                    {index === 0 && (
+                      <div className="why-markets" aria-label="United States and Spain">
+                        <span aria-hidden="true">🇺🇸</span><span>United States</span>
+                        <span className="why-markets-divider" aria-hidden="true" />
+                        <span aria-hidden="true">🇪🇸</span><span>Spain</span>
+                      </div>
+                    )}
+                  </div>
                 </article>
               ))}
             </div>
@@ -268,7 +351,7 @@ function App() {
         </section>
 
         <section
-          className="scroll-mt-24 bg-white py-20 sm:py-24"
+          className="scroll-mt-24 bg-white pt-14 pb-16 sm:pt-18 sm:pb-20"
           id="contact"
           aria-labelledby="contact-title"
         >
@@ -292,8 +375,8 @@ function App() {
                 </a>
               </div>
             </div>
-            <a className="inline-flex min-h-14 items-center justify-center gap-6 rounded-md bg-signal-500 px-6 py-4 font-bold text-white transition-colors hover:bg-brand-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-950 motion-reduce:transition-none" href="/application.html">
-              Request information <span aria-hidden="true">↗</span>
+            <a className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#1D67F2] px-5 text-sm font-bold text-white no-underline transition-colors hover:bg-[#1758D2] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#62E3DF] motion-reduce:transition-none" href="/application.html">
+              Request information <span aria-hidden="true">→</span>
             </a>
           </div>
         </section>

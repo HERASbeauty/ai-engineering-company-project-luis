@@ -80,7 +80,7 @@ button:focus-visible {
   transform: translateY(0);
 }
 
-.site-header {
+.site-header:not(.sticky) {
   position: relative;
   z-index: 10;
   height: 82px;
@@ -896,7 +896,7 @@ button:focus-visible {
     width: min(100% - 2.5rem, 540px);
   }
 
-  .site-header {
+  .site-header:not(.sticky) {
     height: 70px;
   }
 
