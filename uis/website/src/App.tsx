@@ -1,263 +1,321 @@
-import { useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { CoverageSection } from "./components/CoverageSection";
+import { ContactSection } from "./components/ContactSection";
+import { ServiceCard } from "./components/ServiceCard";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
-import { SectionHeading } from "./components/SectionHeading";
-import { ServiceCard } from "./components/ServiceCard";
+import { RouteMap, WarehouseBackdrop } from "./components/HeroVisual";
 
 const services = [
   {
-    number: "01",
     title: "Warehousing",
-    description:
-      "Inventory storage supporting ecommerce operations across Los Angeles and Zaragoza.",
+    description: "Storage, picking, and packing for e-commerce brands.",
     icon: "warehouse" as const,
+    image: {
+      src: "/images/trackflow-service-warehousing.webp",
+      alt: "Warehouse worker checking packages beside stocked shelving",
+    },
+  },
+  {
+    title: "Last-mile Delivery",
+    description: "Delivery from the warehouse to the end customer.",
+    icon: "delivery" as const,
+    image: {
+      src: "/images/trackflow-service-last-mile.webp",
+      alt: "Courier carrying a parcel beside a loaded delivery van",
+    },
+  },
+  {
+    title: "Reverse Logistics",
+    description: "Returns handling, inspection, and product reconditioning.",
+    icon: "returns" as const,
+    image: {
+      src: "/images/trackflow-service-reverse-logistics.webp",
+      alt: "Worker inspecting a returned package at a returns station",
+    },
+  },
+];
+
+const benefits = [
+  {
+    number: "01",
+    title: "Binational operations",
+    description: "Infrastructure in the United States and Spain.",
+    icon: "network",
+    image: "/images/trackflow-why-binational.webp",
   },
   {
     number: "02",
-    title: "Order fulfillment",
-    description:
-      "A hands-on process for receiving orders, picking products, and preparing packages.",
-    icon: "package" as const,
+    title: "Approx. 130 professionals",
+    description: "A dedicated team supporting logistics operations.",
+    icon: "people",
+    image: "/images/trackflow-why-team.webp",
   },
   {
     number: "03",
-    title: "Last-mile coordination",
-    description:
-      "Shipping coordination with carriers to move ecommerce orders toward their destinations.",
-    icon: "route" as const,
+    title: "E-commerce specialization",
+    description: "Fashion, electronics and cosmetics.",
+    icon: "commerce",
+    image: "/images/trackflow-why-ecommerce.webp",
   },
   {
     number: "04",
-    title: "Returns management",
-    description:
-      "Reverse logistics support for products making their way back from the customer.",
-    icon: "return" as const,
+    title: "End-to-end services",
+    description: "Warehousing, last-mile delivery and reverse logistics.",
+    icon: "truck",
+    image: "/images/trackflow-why-end-to-end.webp",
+  },
+];
+
+type BenefitIconName = "network" | "people" | "commerce" | "truck";
+
+function BenefitIcon({ name }: { name: BenefitIconName }) {
+  const paths: Record<BenefitIconName, ReactNode> = {
+    network: <><circle cx="6" cy="7" r="2.25" /><circle cx="18" cy="17" r="2.25" /><circle cx="18" cy="6" r="1.5" /><path d="m8 8.2 7.9 7.1M8.2 6.8l8.3-.6M6.8 9.2l-.3 8.5 9.2-.5" /></>,
+    people: <><circle cx="9" cy="8" r="3" /><path d="M3.5 19v-1.2a5.5 5.5 0 0 1 11 0V19zM16 5.4a3 3 0 0 1 0 5.8m1.2 2.1a4.7 4.7 0 0 1 3.3 4.5V19h-3" /></>,
+    commerce: <><path d="M3 4h2l2.2 10.1a2 2 0 0 0 2 1.6h8.1a2 2 0 0 0 1.9-1.5L21 8H6" /><circle cx="10" cy="19" r="1.2" /><circle cx="17" cy="19" r="1.2" /></>,
+    truck: <><path d="M3 6h11v11H3zM14 10h4l3 3v4h-7z" /><circle cx="7.5" cy="18" r="2" /><circle cx="17.5" cy="18" r="2" /></>,
+  };
+
+  return (
+    <svg aria-hidden="true" className="why-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      {paths[name]}
+    </svg>
+  );
+}
+
+const coverage = [
+  {
+    label: "North America",
+    country: "United States",
+    code: "US",
+    warehouse: "Warehouse in Los Angeles",
+    reach: "National coverage",
+    carriers: ["UPS", "FedEx", "DHL"],
+  },
+  {
+    label: "Europe",
+    country: "Spain",
+    code: "ES",
+    warehouse: "Warehouse in Zaragoza",
+    reach: "Peninsular and island coverage",
+    carriers: ["MRW", "SEUR", "DHL"],
   },
 ];
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    const targetId = window.location.hash.slice(1);
+    if (!targetId) return;
+
+    document.getElementById(targetId)?.scrollIntoView();
+  }, []);
+
   return (
     <>
-      <a className="skip-link" href="#main-content">
+      <a
+        className="absolute left-4 top-4 z-50 -translate-y-20 rounded-md bg-white px-4 py-3 font-semibold text-brand-950 shadow-lg transition-transform focus:translate-y-0 focus:outline-2 focus:outline-offset-2 focus:outline-signal-500 motion-reduce:transition-none"
+        href="#main-content"
+      >
         Skip to content
       </a>
       <SiteHeader menuOpen={menuOpen} onMenuToggle={setMenuOpen} />
       <main id="main-content">
-        <section className="hero" id="home" aria-labelledby="hero-title">
-          <div className="hero__grid page-wrap">
-            <div className="hero__copy">
-              <p className="eyebrow">
-                <span className="eyebrow__rule" aria-hidden="true" />
-                Logistics for ecommerce
+        <section
+          className="hero-section"
+          id="home"
+          aria-labelledby="hero-title"
+        >
+          <WarehouseBackdrop />
+          <div className="hero-scrim" aria-hidden="true" />
+          <div className="hero-layout">
+            <div className="hero-copy">
+              <p className="hero-eyebrow hero-reveal hero-reveal--first">
+                Logistics in motion
               </p>
-              <h1 id="hero-title">
-                The journey behind
-                <br />
-                <span>every order.</span>
-              </h1>
-              <p className="hero__description">
-                Warehousing, order fulfillment, shipping coordination, and
-                returns for ecommerce brands operating across the United States
-                and Spain.
-              </p>
-              <div className="hero__actions">
-                <a className="button button--light" href="#services">
-                  Explore our services
-                  <span aria-hidden="true">↘</span>
-                </a>
-                <a className="text-link text-link--light" href="#about">
-                  Get to know TrackFlow
-                </a>
-              </div>
-              <p className="hero__note">
-                A logistics partner for the work behind ecommerce.
-              </p>
-            </div>
-            <div
-              className="network-card"
-              role="img"
-              aria-label="Illustration connecting TrackFlow's locations in Los Angeles and Zaragoza"
-            >
-              <div className="network-card__top">
-                <span className="network-card__label">OUR FOOTPRINT</span>
-                <span className="network-card__ornament" aria-hidden="true">
-                  ↗
-                </span>
-              </div>
-              <svg
-                className="network-card__map"
-                viewBox="0 0 520 330"
-                fill="none"
-                aria-hidden="true"
+              <h1
+                aria-label="Logistics that scales with your e-commerce"
+                className="hero-title hero-reveal hero-reveal--second"
+                id="hero-title"
               >
-                <path
-                  className="map-continent"
-                  d="m78 104 29-31 38-11 22 13 11 28-16 18-24 4-10 23-27 7-18 32-21-12 5-28-15-16 9-27 17 0Zm178-3 22-21 30 8 10 18-13 18-25 4-24-13v-14Zm68-38 31-19 44 8 21 22-12 18-34-3-22 12-24-9-4-29Zm10 68 29-16 43 13 19 26-17 23-29 2-15-18-24 3-17-17 11-16Zm76 54 18-6 16 10-5 17-21 3-11-11 3-13ZM151 175l18 7 12 21-11 28-19 24-14-9 4-29-12-18 22-24Zm56 37 31-11 38 18 17 35-17 29-44-3-18-25-24-12 17-31Zm-99-93 23-11 13 15-13 19-20-5-3-18Z"
-                />
-                <path className="map-route" d="M126 151 Q258 53 385 133" />
-                <circle className="map-hub map-hub--west" cx="126" cy="151" r="7" />
-                <circle className="map-hub map-hub--east" cx="385" cy="133" r="7" />
-                <circle className="map-hub__ring" cx="126" cy="151" r="14" />
-                <circle className="map-hub__ring" cx="385" cy="133" r="14" />
-              </svg>
-              <div className="network-card__cities">
-                <div>
-                  <span className="city-label">UNITED STATES</span>
-                  <strong>Los Angeles</strong>
-                </div>
-                <span className="network-card__connector" aria-hidden="true" />
-                <div className="network-card__city--right">
-                  <span className="city-label">SPAIN</span>
-                  <strong>Zaragoza</strong>
-                </div>
-              </div>
-              <p className="network-card__caption">
-                Two markets. One logistics story.
+                <span>Logistics that</span>
+                <span>
+                  <span className="hero-title-accent">scales</span> with your
+                </span>
+                <span>e-commerce</span>
+              </h1>
+              <p className="hero-subtitle hero-reveal hero-reveal--third">
+                <span className="hidden sm:inline">
+                  Warehouse management, last-mile deliveries, and reverse logistics in the United States and Spain. Over 15 years helping fashion, electronics, and cosmetics brands grow without worrying about operations.
+                </span>
+                <span className="sm:hidden">
+                  Warehousing, last-mile delivery, and reverse logistics across the US and Spain.
+                </span>
               </p>
+              <div className="hero-actions hero-reveal hero-reveal--fourth">
+                <a className="hero-primary-cta" href="/application.html">
+                  Request information <span aria-hidden="true">→</span>
+                </a>
+                <a className="hero-secondary-cta" href="#services">
+                  Explore services
+                  <svg
+                    aria-hidden="true"
+                    className="size-4"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                  >
+                    <path
+                      d="m5 7.5 5 5 5-5"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.7"
+                    />
+                  </svg>
+                </a>
+              </div>
             </div>
-            <a className="hero__scroll" href="#services">
-              <span aria-hidden="true">↓</span> Discover TrackFlow
-            </a>
+            <RouteMap />
+            <ul className="hero-service-strip" aria-label="TrackFlow services">
+              <li className="hero-service-item">
+                <svg
+                  aria-hidden="true"
+                  className="hero-service-icon"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.8"
+                >
+                  <path d="m16 3 11 6.2v13.6L16 29 5 22.8V9.2L16 3Z" />
+                  <path d="m5.5 9.5 10.5 6 10.5-6M16 15.5V29" />
+                </svg>
+                <div className="hero-service-copy">
+                  <span className="hero-service-title">Warehousing</span>
+                  <p className="hero-service-description">
+                    Flexible storage for growing brands
+                  </p>
+                </div>
+              </li>
+              <li className="hero-service-item">
+                <svg
+                  aria-hidden="true"
+                  className="hero-service-icon"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.8"
+                >
+                  <path d="M3.5 7h16v15h-16zM19.5 12h5.2l4.3 5v5h-9.5z" />
+                  <circle cx="9" cy="23" r="2.5" />
+                  <circle cx="24.5" cy="23" r="2.5" />
+                </svg>
+                <div className="hero-service-copy">
+                  <span className="hero-service-title">Last-mile delivery</span>
+                  <p className="hero-service-description">
+                    Reliable delivery to your customers
+                  </p>
+                </div>
+              </li>
+              <li className="hero-service-item">
+                <svg
+                  aria-hidden="true"
+                  className="hero-service-icon"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.8"
+                >
+                  <path d="M26 11a11 11 0 0 0-18.8-4L5 9.5M5 9.5V4.7m0 4.8h4.8" />
+                  <path d="M6 21a11 11 0 0 0 18.8 4L27 22.5m0 0v4.8m0-4.8h-4.8" />
+                </svg>
+                <div className="hero-service-copy">
+                  <span className="hero-service-title">Reverse logistics</span>
+                  <p className="hero-service-description">
+                    Simpler returns, stronger customer loyalty
+                  </p>
+                </div>
+              </li>
+            </ul>
           </div>
-        </section>
-
-        <section className="intro section-pad" aria-label="Our approach">
-          <div className="page-wrap intro__inner">
-            <span className="intro__index">BUILT AROUND THE ORDER</span>
-            <p>
-              From the warehouse shelf to the customer’s door—and back again.
-              TrackFlow supports the essential logistics work behind ecommerce.
-            </p>
-            <span className="intro__mark" aria-hidden="true">
-              TF.
-            </span>
-          </div>
+          <div className="hero-bottom-rule" aria-hidden="true" />
         </section>
 
         <section
-          className="services section-pad"
+          className="services-section scroll-mt-24"
           id="services"
           aria-labelledby="services-title"
+          aria-describedby="services-description"
         >
-          <div className="page-wrap">
-            <SectionHeading
-              eyebrow="What we do"
-              title="Logistics, connected to the way business moves."
-              description="Practical services for the operational journey of an ecommerce order."
-              id="services-title"
-            />
-            <div className="service-grid">
+          <div className="services-container">
+            <div className="services-intro">
+              <div>
+                <p className="services-eyebrow">Our services</p>
+                <h2 className="services-title" id="services-title">
+                  End-to-end logistics for e-commerce brands.
+                </h2>
+              </div>
+              <p className="services-intro-description" id="services-description">
+                Warehousing, last-mile delivery, and reverse logistics for
+                e-commerce brands in the United States and Spain.
+              </p>
+            </div>
+            <div className="services-grid">
               {services.map((service) => (
-                <ServiceCard key={service.number} {...service} />
+                <ServiceCard key={service.title} {...service} />
               ))}
             </div>
           </div>
         </section>
 
-        <section
-          className="presence section-pad"
-          id="presence"
-          aria-labelledby="presence-title"
-        >
-          <div className="page-wrap presence__layout">
-            <div className="presence__copy">
-              <SectionHeading
-                eyebrow="Where we operate"
-                title="Across the Atlantic. Rooted in two cities."
-                description="TrackFlow operates in the United States and Spain, with warehouse locations in Los Angeles and Zaragoza."
-                id="presence-title"
-              />
-              <p className="presence__detail">
-                Teams work across both countries to support a business that
-                connects ecommerce operations with customers in different
-                markets.
-              </p>
-              <a className="text-link" href="#about">
-                More about TrackFlow <span aria-hidden="true">→</span>
-              </a>
+        <CoverageSection regions={coverage} />
+
+        <section className="why-section" aria-labelledby="why-title">
+          <div className="why-container">
+            <div className="why-intro">
+              <div className="why-copy">
+                <p className="why-eyebrow">Why TrackFlow</p>
+                <h2 className="why-title" id="why-title">
+                  Built for the way <span>commerce</span> moves.
+                </h2>
+                <p className="why-subtitle">Two markets. One connected logistics operation.</p>
+              </div>
             </div>
-            <div className="location-list">
-              <article className="location">
-                <span className="location__number">01</span>
-                <div className="location__body">
-                  <span className="city-label">UNITED STATES</span>
-                  <h3>Los Angeles</h3>
-                  <p>Warehouse location</p>
-                </div>
-                <span className="location__arrow" aria-hidden="true">↗</span>
-              </article>
-              <article className="location">
-                <span className="location__number">02</span>
-                <div className="location__body">
-                  <span className="city-label">SPAIN</span>
-                  <h3>Zaragoza</h3>
-                  <p>Warehouse location</p>
-                </div>
-                <span className="location__arrow" aria-hidden="true">↗</span>
-              </article>
-              <p className="location-list__note">
-                The locations shown reflect TrackFlow’s documented operating
-                footprint.
-              </p>
+            <div className="why-grid">
+              {benefits.map((benefit, index) => (
+                <article className={`why-card why-card--${index + 1}`} key={benefit.number}>
+                  <img className="why-card-image" src={benefit.image} alt="" loading="lazy" decoding="async" />
+                  <div className="why-card-content">
+                    <div className="why-card-topline">
+                      <span className="why-card-icon-wrap"><BenefitIcon name={benefit.icon as BenefitIconName} /></span>
+                      <span className="why-card-number">{benefit.number}</span>
+                    </div>
+                    <div className="why-card-copy">
+                      <h3>{benefit.title}</h3>
+                      <p>{benefit.description}</p>
+                    </div>
+                    {index === 0 && (
+                      <div className="why-markets" aria-label="United States and Spain">
+                        <span aria-hidden="true">🇺🇸</span><span>United States</span>
+                        <span className="why-markets-divider" aria-hidden="true" />
+                        <span aria-hidden="true">🇪🇸</span><span>Spain</span>
+                      </div>
+                    )}
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>
 
-        <section
-          className="about section-pad"
-          id="about"
-          aria-labelledby="about-title"
-        >
-          <div className="page-wrap about__layout">
-            <div className="about__stamp" aria-hidden="true">
-              <span>TRACKFLOW</span>
-              <strong>2009</strong>
-              <span>LOS ANGELES · USA</span>
-              <span className="about__stamp-line" />
-              <span>LOGISTICS FOR ECOMMERCE</span>
-            </div>
-            <div className="about__copy">
-              <SectionHeading
-                eyebrow="About TrackFlow"
-                title="Making the movement of commerce our business."
-                description="Founded in Los Angeles in 2009, TrackFlow is a logistics and warehousing company focused on serving ecommerce brands."
-                id="about-title"
-              />
-              <p>
-                The work spans storing inventory, preparing and packing orders,
-                coordinating shipments, and managing returns—supporting the
-                journey from order to delivery or return.
-              </p>
-              <a className="text-link" href="#contact">
-                Talk with TrackFlow <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section
-          className="contact section-pad"
-          id="contact"
-          aria-labelledby="contact-title"
-        >
-          <div className="page-wrap contact__inner">
-            <p className="eyebrow eyebrow--light">
-              <span className="eyebrow__rule" aria-hidden="true" />
-              Start a conversation
-            </p>
-            <h2 id="contact-title">Good logistics starts with a conversation.</h2>
-            <p>
-              Interested in learning more about TrackFlow? A verified public
-              contact channel is not available on this website yet.
-            </p>
-            <span className="contact__note">
-              No contact form or message submission is configured.
-            </span>
-          </div>
-          <span className="contact__decoration" aria-hidden="true">TF.</span>
-        </section>
+        <ContactSection />
       </main>
       <SiteFooter onNavigate={() => setMenuOpen(false)} />
     </>

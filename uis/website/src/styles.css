@@ -1,3 +1,6 @@
+@import "tailwindcss/theme";
+@import "tailwindcss/utilities";
+
 :root {
   font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
   color: #152a3c;
@@ -77,7 +80,7 @@ button:focus-visible {
   transform: translateY(0);
 }
 
-.site-header {
+.site-header:not(.sticky) {
   position: relative;
   z-index: 10;
   height: 82px;
@@ -893,7 +896,7 @@ button:focus-visible {
     width: min(100% - 2.5rem, 540px);
   }
 
-  .site-header {
+  .site-header:not(.sticky) {
     height: 70px;
   }
 
