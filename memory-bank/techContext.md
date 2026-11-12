@@ -13,8 +13,9 @@ El repositorio parte de una plantilla de monorepo con documentación y directori
 - `data/`: `raw/`, `pipelines/`, `process/` y `eval/`.
 - `packages/shared/`: paquete de tipos compartidos y su fuente `types/index.ts`.
 - También existen `docs/`, `infra/`, `internal/`, `mcps/`, `scripts/`, `shared/` y `workflows/`, con guías de la plantilla.
+- `src/`: utilidades TypeScript de procesamiento de datos de Milestone 2 (modelos, colecciones, búsquedas, transformaciones y validaciones) y un script de demostración.
 
-No hay un runner de workspace JavaScript en la raíz. El `package.json` de `@repo/shared-types` es privado, no define scripts y no configura por sí mismo un workspace.
+No hay un runner de workspace JavaScript en la raíz; el `package.json` raíz solo sirve para validar y ejecutar `src/` y no declara workspaces. El `package.json` de `@repo/shared-types` es privado, no define scripts y no configura por sí mismo un workspace.
 
 ## Tecnologías y configuraciones confirmadas
 
@@ -28,7 +29,9 @@ No hay un runner de workspace JavaScript en la raíz. El `package.json` de `@rep
 - **Devcontainer:** usa `mcr.microsoft.com/devcontainers/universal:2`, configura extensiones de VS Code y reenvía los puertos 3000, 8000 y 5678.
 - El puerto 3001 del backoffice no está incluido explícitamente en `forwardPorts` en `.devcontainer/devcontainer.json`. La configuración del devcontainer no se ha cambiado como parte de la implementación de las interfaces.
 - **Script de post-creación:** intenta habilitar Corepack y `pnpm`, actualizar `pip`, instalar `uv` y ejecutar `uv sync`. Son pasos del entorno de desarrollo; no acreditan que el monorepo tenga un workspace pnpm o un proyecto Python configurado en la raíz.
-- No hay `package.json` raíz, archivo de workspace pnpm ni manifiesto Python de dependencias en la raíz. Los comandos de instalación, desarrollo, build y preview de las interfaces están definidos por separado en sus respectivos directorios.
+- **Utilidades de Milestone 2 (`src/`):** TypeScript puro, sin dependencias de ejecución. El `package.json` y el `tsconfig.json` de la raíz (modo `strict`, solo incluyen `src/**/*.ts`) añaden `typescript` y `tsx` como dependencias de desarrollo gestionadas con npm. Comandos desde la raíz: `npm install`, `npm run typecheck` (`tsc --noEmit`) y `npm run demo` (`tsx src/demo.ts`). Los datos de `src/demo.ts` son ficticios.
+- No hay archivo de workspace pnpm ni manifiesto Python de dependencias en la raíz. Los comandos de instalación, desarrollo, build y preview de las interfaces siguen definidos por separado en sus respectivos directorios.
+- **Incidencia del devcontainer (12/11/2026):** la creación de un Codespace nuevo falló por falta de espacio en disco (`no space left on device`) al construir la imagen `universal:2` y arrancó en modo de recuperación. Se resolvió con «Full Rebuild» sin cambiar `.devcontainer/`. Puede repetirse en Codespaces nuevos de 32 GB.
 
 ## Ubicaciones de aplicaciones
 
