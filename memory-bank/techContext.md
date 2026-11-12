@@ -19,10 +19,10 @@ No hay un runner de workspace JavaScript en la raíz; el `package.json` raíz so
 
 ## Tecnologías y configuraciones confirmadas
 
-- **Interfaces:** tanto `uis/website/` como `uis/backoffice/` son aplicaciones independientes de React + Vite + TypeScript. Cada una mantiene su propio `package.json` y `pnpm-lock.yaml`; no necesitan un workspace JavaScript en la raíz.
-- **Rutas y puertos:** ambas aplicaciones se sirven desde `/`. El sitio público usa el puerto 3000 y el backoffice el 3001; los scripts de desarrollo y preview se definen en los manifiestos locales de cada aplicación.
+- **Interfaces:** tanto `uis/website/` como `uis/backoffice/` son aplicaciones independientes de React + Vite + TypeScript. El sitio público usa Tailwind CSS v4 (4.3.3) con el plugin de Vite. Cada aplicación mantiene su propio `package.json` y `pnpm-lock.yaml`; no necesitan un workspace JavaScript en la raíz.
+- **Rutas y puertos:** ambas aplicaciones se sirven desde `/`. El sitio público usa el puerto 3000 y el backoffice el 3001; los scripts de desarrollo y preview se definen en los manifiestos locales de cada aplicación. El sitio público tiene entradas Vite independientes en `/` (`index.html`), `/application.html` (`application.html`) y `/privacy.html` (`privacy.html`), no rutas de un router SPA.
 - **Backoffice de demostración:** los registros operativos ficticios se mantienen en módulos de datos locales separados de los componentes de UI. Las búsquedas y los filtros se ejecutan solo en el cliente. El dashboard distingue los hechos documentados de TrackFlow de sus valores operativos simulados.
-- **Límites actuales de las interfaces:** no hay backend operativo, autenticación real, almacenamiento persistente ni integraciones externas con sistemas de negocio. El sitio público es informativo y no ofrece tracking, inventario, integraciones de transportistas ni formulario de contacto funcional.
+- **Límites actuales de las interfaces:** no hay backend operativo, autenticación real, almacenamiento persistente ni integraciones externas con sistemas de negocio. El sitio público tiene la landing (`/`), el formulario de solicitud (`/application.html`) con validación en el cliente (`uis/website/src/validation.ts`, con una copia compilada en `uis/website/validation.js` como entregable académico) y envío simulado, y la página de privacidad (`/privacy.html`). El formulario no envía datos a ningún backend. No hay tracking, inventario ni integraciones de transportistas funcionales.
 - **Validación configurada:** los scripts `pnpm build` de ambas aplicaciones ejecutan `tsc --noEmit` antes de generar los recursos de producción con Vite. Sus manifiestos no configuran scripts de lint o test.
 - **TypeScript compartido:** hay un archivo de tipos compartidos y metadatos de paquete en `packages/shared/`; no forman un runner de workspace ni una dependencia compartida entre las aplicaciones.
 - **Python:** el contenedor configura una ruta de intérprete Python; existen scripts Python en la plantilla. No se ha implementado el backend de TrackFlow.
@@ -35,7 +35,7 @@ No hay un runner de workspace JavaScript en la raíz; el `package.json` raíz so
 
 ## Ubicaciones de aplicaciones
 
-- `uis/website/`: sitio informativo público, en inglés, sobre TrackFlow, sus servicios documentados y su contexto empresarial.
+- `uis/website/`: sitio público en inglés, construido con React, Vite y Tailwind CSS v4. Entradas Vite independientes: `/` (landing), `/application.html` (formulario con envío simulado) y `/privacy.html`. No procesa solicitudes reales ni se conecta a un backend. Desplegado en Cloudflare Pages (`https://trackflow-2s1.pages.dev/`) desde la rama `feature/trackflow-public-website`, con raíz `uis/website`, comando `pnpm build` y salida `dist`.
 - `uis/backoffice/`: interfaz interna de demostración con secciones de operaciones, pedidos, almacenes, coordinación de transportistas y devoluciones. No es un sistema de operaciones conectado.
 - `services/`: servicios backend de soporte. No hay una API o worker de TrackFlow implementado. La guía de la plantilla recomienda una API centralizada con FastAPI y desaconseja empezar con muchos microservicios; esto sigue siendo una recomendación, no una decisión arquitectónica aprobada ni un servicio implementado.
 

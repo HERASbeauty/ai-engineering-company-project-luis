@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410 100" role="img" aria-labelledby="title">
+  <title id="title">TrackFlow Global Network</title>
+  <defs>
+    <linearGradient id="orbit" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#21D4E8"/>
+      <stop offset="1" stop-color="#2582F4"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#orbit)" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="50" cy="50" r="38" stroke-width="3.5"/>
+    <path d="M14 42c17-15 54-20 72-2M14 58c18 15 55 19 72 2M50 12c-12 10-19 23-19 38s7 28 19 38M50 12c12 10 19 23 19 38s-7 28-19 38" stroke-width="2.7"/>
+    <path d="M16 32c20 14 48 22 68 36M16 68c20-14 48-22 68-36" stroke-width="2.2" opacity=".9"/>
+  </g>
+  <g fill="#24D1E6" stroke="#071422" stroke-width="2">
+    <circle cx="14" cy="42" r="4.6"/><circle cx="86" cy="40" r="4.6"/><circle cx="14" cy="58" r="4.6"/><circle cx="86" cy="60" r="4.6"/>
+    <circle cx="31" cy="50" r="4"/><circle cx="69" cy="50" r="4"/><circle cx="50" cy="12" r="4.6"/><circle cx="50" cy="88" r="4.6"/>
+  </g>
+  <text x="108" y="64" fill="#F3F6F8" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="750" letter-spacing="1.2">TRACK<tspan fill="#62E3DF">FLOW</tspan></text>
+</svg>
