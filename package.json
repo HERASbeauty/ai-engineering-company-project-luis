@@ -1,0 +1,14 @@
+{
+  "name": "trackflow-domain-models",
+  "version": "0.1.0",
+  "private": true,
+  "description": "TrackFlow data processing utilities (Milestone 2)",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "demo": "tsx src/demo.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,51 @@
+import { Product, Shipment } from "../types/models";
+
+export function findProductBySKU(products: Product[], sku: string): Product | null {
+  const targetSku = sku.toLowerCase();
+
+  for (const product of products) {
+    if (product.sku.toLowerCase() === targetSku) {
+      return product;
+    }
+  }
+
+  return null;
+}
+
+export function findShipmentById(shipments: Shipment[], id: string): Shipment | null {
+  for (const shipment of shipments) {
+    if (shipment.id === id) {
+      return shipment;
+    }
+  }
+
+  return null;
+}
+
+// Expects sortedProducts to be sorted by weightKg in ascending order.
+// Each step halves the search range: if the middle weight is too small,
+// keep the right half; if it is too large, keep the left half.
+export function binarySearchProductByWeight(
+  sortedProducts: Product[],
+  targetWeight: number
+): number {
+  let low = 0;
+  let high = sortedProducts.length - 1;
+
+  while (low <= high) {
+    const middle = Math.floor((low + high) / 2);
+    const middleWeight = sortedProducts[middle].weightKg;
+
+    if (middleWeight === targetWeight) {
+      return middle;
+    }
+
+    if (middleWeight < targetWeight) {
+      low = middle + 1;
+    } else {
+      high = middle - 1;
+    }
+  }
+
+  return -1;
+}
